@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:cssConfig -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/widgets.css">
+    <!-- endbuild -->
+
+    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="djangoApp" ng-controller="PhoneListCtrl">
+<!--[if lt IE 8]>
+<p class="browsehappy">You aкe using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<ul>
+    <li ng-repeat="phone in phones">
+        <img src="{{phone.imageUrl}}" alt="{{phone.name}}"/>
+        <h4>{{phone.name}}</h4>
+        <p>{{phone.brand}}</p>
+        <p>{{phone.rewardPoints}}</p>
+        <p>{{phone.quantity}}</p>
+        <p>{{phone.price}}</p>
+        <input ng-if="phone.inCart == true" type="text" ng-model="phone.quantity"/>
+        <a ng-if="phone.inCart !== true" ng-click="addToCart(phone)" href="">
+            add to cart
+        </a>
+        <a ng-if="phone.inCart == true" ng-click="removeFromCart(phone)" href="">
+            remove from cart
+        </a>
+    </li>
+</ul>
+<ul style="background: red">
+    <li ng-repeat="phone in phones| filter:{'inCart':true}" >
+        <img src="{{phone.imageUrl}}" alt="{{phone.name}}"/>
+        <h4>{{phone.name}}</h4>
+        <h4>{{phone.quantity}}</h4>
+        <p>{{phone.brand}}</p>
+        <p>{{phone.rewardPoints}}</p>
+        <p>{{phone.price}}</p>
+        <a ng-click="removeFromCart(phone)" href="">remove</a>
+    </li>
+</ul>
+<p>total {{getCartTotal()|currency}}</p>
+<!-- build:jsConfig -->
+<script src="/js/vendor/jquery-1.11.1.js"></script>
+<script src="/js/app/vendor/angular.js"></script>
+<script src="/js/app/contollers/PhoneListCtrl.js"></script>
+<script src="/js/vendor/TweenMax.js"></script>
+<script src="/js/vendor/fancybox.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<!-- endbuild -->
+<!--Удалить в production версии-->
+<script src="//localhost:35729/livereload.js"></script>
+
+</body>
+</html>

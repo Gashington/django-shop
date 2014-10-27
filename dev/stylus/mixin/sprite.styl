@@ -1,0 +1,22 @@
+$s-fiio-by-logo = 0px 1818px 0px -1818px 261px 100px 2088px 1918px 'sprite.png';
+$s-map = 261px 1818px -261px -1818px 15px 9px 2088px 1918px 'sprite.png';
+$s-sprite = 0px 0px 0px 0px 2088px 1818px 2088px 1918px 'sprite.png';
+
+spriteWidth($sprite)
+    width $sprite[4]
+
+spriteHeight($sprite)
+    height $sprite[5]
+
+spritePosition($sprite)
+    background-position $sprite[2] $sprite[3]
+
+spriteImage($sprite)
+    background-image url(../img/$sprite[8])
+
+sprite($sprite)
+    if !match('hover', selector()) && !match('active', selector())
+        spriteImage($sprite)
+    spritePosition($sprite)
+    spriteWidth($sprite)
+    spriteHeight($sprite)
