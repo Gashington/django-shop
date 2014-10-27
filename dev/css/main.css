@@ -10,11 +10,5 @@ ul {
   list-style: none;
 }
 body {
-  background: url("../img/fon_6.jpg") no-repeat;
-}
-body i {
-  background-image: url("../img/sprite.png");
-  background-position: -261px -1818px;
-  width: 15px;
-  height: 9px;
+  background: url("../img/bg/mooning.png");
 }
